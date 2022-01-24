@@ -30,8 +30,16 @@ form.addEventListener('submit', e => {
 		});
 		createMessage(input.value, 'right', 'Me');
 		input.value = '';
+	} else if (input.value) {
+		socket.emit('message-sent', {
+			user: userName,
+			message: ' ',
+			room: roomName,
+		});
+		alert('Don\'t try to spam!')
+		input.value = '';
 	} else {
-		alert('Enter something in the text field');
+		alert('Write a message >:(');
 	}
 });
 
