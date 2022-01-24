@@ -22,7 +22,15 @@ document.getElementById('room-name').textContent = roomName;
 
 form.addEventListener('submit', e => {
 	e.preventDefault();
-	if (input.value) {
+	
+		if (input.value) {
+		socket.emit('message-sent', {
+			user: userName,
+			message: ' '
+			room: roomName,
+		});
+		
+		} else if (input.value) {
 		socket.emit('message-sent', {
 			user: userName,
 			message: input.value,
@@ -30,13 +38,6 @@ form.addEventListener('submit', e => {
 		});
 		createMessage(input.value, 'right', 'Me');
 		input.value = '';
-	} else if (input.value) {
-		socket.emit('message-sent', {
-			user: userName,
-			message: ' ',
-			room: roomName,
-		});
-		if(input.value === ' ') return alert('Don\'t try to spam!');
 	} else {
 		alert('Write a message >:(');
 	}
