@@ -26,13 +26,6 @@ form.addEventListener('submit', e => {
 		if (input.value) {
 		socket.emit('message-sent', {
 			user: userName,
-			message: ' '
-			room: roomName,
-		});
-		
-		} else if (input.value) {
-		socket.emit('message-sent', {
-			user: userName,
 			message: input.value,
 			room: roomName,
 		});
