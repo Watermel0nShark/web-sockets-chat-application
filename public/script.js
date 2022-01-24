@@ -36,7 +36,7 @@ form.addEventListener('submit', e => {
 			message: ' ',
 			room: roomName,
 		});
-		alert('Don\'t try to spam!')
+		if(input.value === ' ') return alert('Don\'t try to spam!');
 	} else {
 		alert('Write a message >:(');
 	}
